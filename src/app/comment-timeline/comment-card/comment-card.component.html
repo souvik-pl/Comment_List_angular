@@ -1,0 +1,37 @@
+<div class="comment_reply_layout">
+  <div class="wrapper">
+    <div class="avatar_container">
+      <img [src]="commentData.ownerAvatar">
+    </div>
+    <div class="right_container">
+      <div class="info_container">
+        <div class="username">
+          {{commentData.ownerName}}
+        </div>
+        <div class="time">
+          {{commentData.commentTime | date:'short'}}
+        </div>
+      </div>
+      <div class="comment_text">
+        {{commentData.commentText}}
+      </div>
+    </div>
+  </div>
+  <div class="actions_container">
+    <button class="action_button">
+      Reply
+    </button>
+    <button class="action_button">
+      {{commentData.replyList.length}} Replies
+    </button>
+    <button *ngIf="commentData.ownerId === currentUser" class="action_button">
+      Edit
+    </button>
+  </div>
+</div>
+<div class="replies_container">
+  <app-reply-card
+    *ngFor="let reply of commentData.replyList"
+    [replyData]="reply"
+  ></app-reply-card>
+</div>

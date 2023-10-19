@@ -1,0 +1,7 @@
+<h4>{{allComments.length}} comments</h4>
+<div class="timeline_container">
+  <app-comment-card
+    *ngFor="let comment of allComments"
+    [commentData]="comment"
+  ></app-comment-card>
+</div>

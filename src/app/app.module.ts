@@ -5,11 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentTimelineComponent } from './comment-timeline/comment-timeline.component';
+import { CommentCardComponent } from './comment-timeline/comment-card/comment-card.component';
+import { ReplyCardComponent } from './comment-timeline/reply-card/reply-card.component';
+import { StorageService } from './_services/storage.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    CommentTimelineComponent,
+    CommentCardComponent,
+    ReplyCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

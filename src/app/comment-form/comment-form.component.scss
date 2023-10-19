@@ -1,6 +1,4 @@
-@import "src/app/_shared/scss/theme";
-
-$border_radius: 0.3rem;
+@import "src/app/_shared/styles/theme";
 
 form {
   width: 100%;
@@ -22,7 +20,7 @@ form {
       padding: 0.5rem;
       border: none;
       border: 1px solid $black_color;
-      border-radius: $border_radius;
+      border-radius: 0.3rem;
 
       &:focus {
         outline: none !important;
@@ -51,7 +49,7 @@ form {
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: $border_radius;
+      border-radius: 0.3rem;
       cursor: pointer;
       background-color: $primary_color;
       color: $white_color;

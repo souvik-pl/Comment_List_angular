@@ -1,0 +1,66 @@
+@import "src/app/_shared/styles/theme";
+
+.comment_reply_layout {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-right: 1rem;
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+
+    .avatar_container {
+      width: 3rem;
+      height: 3rem;
+      background-color: $gray_color;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .right_container {
+      width: calc(100% - 3rem);
+      padding-left: 1rem;
+
+      .info_container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .username {
+          color: $primary_color;
+        }
+
+        .time {
+          color: $gray_color;
+          font-size: 0.8rem;
+        }
+      }
+
+      .comment_text {
+        width: 100%;
+      }
+    }
+  }
+
+  .actions_container {
+    width: 100%;
+    height: 2rem;
+    padding-left: 4rem;
+    display: flex;
+    align-items: center;
+
+    .action_button {
+      color: $primary_color;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      margin-right: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "src/app/_shared/styles/theme";
+
+h4 {
+  height: 3rem;
+}
+
+.timeline_container {
+  width: 100%;
+  height: calc(100% - 3rem);
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray_color;
+    border-radius: 3px;
+  }
+}
