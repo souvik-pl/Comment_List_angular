@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/app/_shared/scss/theme";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  color: $black_color;
+  font-size: 15px;
+}

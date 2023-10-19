@@ -1,0 +1,38 @@
+<form [formGroup]="commentForm" (ngSubmit)="commentFormSubmitHandler()">
+  <div class="form_field">
+    <label for="name-input">Enter your name</label>
+    <input
+      id="name-input"
+      type="text"
+      formControlName="name"
+      [ngClass]="commentForm.get('name')?.invalid && commentForm.get('name')?.touched ?
+      'input_error' : ''"
+    />
+    <p class="error_message">
+      {{ commentForm.get('name')?.invalid && commentForm.get('name')?.touched ? 'Required' : ''}}
+    </p>
+  </div>
+  <div class="form_field">
+    <label for="comment-input">Write your comment</label>
+    <input
+      id="comment-input"
+      type="text"
+      formControlName="comment"
+      [ngClass]="commentForm.get('comment')?.invalid && commentForm.get('comment')?.touched ?
+      'input_error' : ''"
+    />
+    <p class="error_message">
+      {{ commentForm.get('comment')?.invalid && commentForm.get('comment')?.touched ? 'Required' : ''}}
+    </p>
+  </div>
+
+  <div class="button_container">
+    <button
+      type="submit"
+      [disabled]="!(commentForm.status === 'VALID')"
+      [ngClass]="commentForm.status !== 'VALID' ? 'btn_disabled' : ''"
+    >
+      Post
+    </button>
+  </div>
+</form>

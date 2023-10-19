@@ -1,0 +1,28 @@
+@import "src/app/_shared/scss/theme";
+
+.app_container {
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+
+  header {
+    width: 100%;
+    height: 10%;
+  }
+
+  main {
+    width: 100%;
+    height: 90%;
+    display: flex;
+
+    section:nth-child(1) {
+      width: 35%;
+      height: 100%;
+    }
+
+    section:nth-child(2) {
+      width: 65%;
+      height: 100%;
+    }
+  }
+}
