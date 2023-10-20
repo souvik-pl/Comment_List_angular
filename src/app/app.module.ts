@@ -11,6 +11,7 @@ import { ReplyCardComponent } from './comment-timeline/reply-card/reply-card.com
 import { StorageService } from './_services/storage.service';
 import { PostService } from './_services/post.service';
 import { CommentReplyTemplateComponent } from './comment-timeline/_shared/components/comment-reply-template/comment-reply-template.component';
+import { ValidatorService } from './_services/validator.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { CommentReplyTemplateComponent } from './comment-timeline/_shared/compon
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [StorageService, PostService],
+  providers: [StorageService, PostService, ValidatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

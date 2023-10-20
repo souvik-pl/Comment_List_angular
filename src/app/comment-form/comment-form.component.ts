@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../_services/post.service';
+import { ValidatorService } from '../_services/validator.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -12,15 +13,16 @@ export class CommentFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private postService: PostService
+    private postService: PostService,
+    private validatorService: ValidatorService
   ) {
     this.initializeCommentForm();
   }
 
   private initializeCommentForm(): void {
     this.commentForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      comment: ['', [Validators.required]]
+      name: ['', [Validators.required, this.validatorService.whiteSpaceValidator]],
+      comment: ['', [Validators.required, this.validatorService.whiteSpaceValidator]],
     });
   }
 

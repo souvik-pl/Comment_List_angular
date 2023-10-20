@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidatorService } from 'src/app/_services/validator.service';
 import { IComment } from 'src/app/_shared/interfaces/comment.interface';
 import { IUpdateComment } from 'src/app/_shared/interfaces/update-comment.interface';
 
@@ -15,12 +16,18 @@ export class CommentReplyTemplateComponent implements OnChanges {
   @Output() cancelEvent: EventEmitter<void> = new EventEmitter();
   @Output() updateEvent: EventEmitter<IUpdateComment> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private validatorService: ValidatorService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['isEditable'].currentValue === true) {
       this.commentForm = this.formBuilder.group({
-        comment: [this.commentData.commentText, [Validators.required]],
+        comment: [this.commentData.commentText, [
+          Validators.required,
+          this.validatorService.whiteSpaceValidator
+        ]],
       });
     }
   }
