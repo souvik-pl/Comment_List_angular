@@ -1,0 +1,28 @@
+<ng-container *ngIf="!isEditable">
+  <div class="info_container">
+    <div class="username">
+      {{commentData.ownerName}}
+    </div>
+    <div class="time">
+      {{commentData.commentTime | date:'short'}}
+    </div>
+  </div>
+  <div class="comment_text">
+    {{commentData.commentText}}
+  </div>
+</ng-container>
+<form
+  *ngIf="isEditable"
+  [formGroup]="commentForm"
+  (ngSubmit)="updateHandler()"
+  class="editable_container"
+>
+  <input type="text" formControlName="comment" />
+  <button [disabled]="!(commentForm.status === 'VALID')"
+    [ngClass]="commentForm.status !== 'VALID' ? 'btn_disabled' : ''">
+    Update
+  </button>
+  <button type="button" class="cancel_button" (click)="cancelEditHandler()">
+    Cancel
+  </button>
+</form>

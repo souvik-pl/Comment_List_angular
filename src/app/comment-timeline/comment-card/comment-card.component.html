@@ -1,34 +1,33 @@
 <div class="comment_reply_layout">
   <div class="wrapper">
     <div class="avatar_container">
-      <img [src]="commentData.ownerAvatar">
+      <img [src]="commentData.ownerAvatar" />
     </div>
     <div class="right_container">
-      <div class="info_container">
-        <div class="username">
-          {{commentData.ownerName}}
-        </div>
-        <div class="time">
-          {{commentData.commentTime | date:'short'}}
-        </div>
-      </div>
-      <div class="comment_text">
-        {{commentData.commentText}}
-      </div>
+      <app-comment-reply-template
+        [isEditable]="isCommentEditable"
+        [commentData]="commentData"
+        (cancelEvent)="cancelEditCommentHandler()"
+        (updateEvent)="updateCommentHandler($event)"
+      ></app-comment-reply-template>
     </div>
   </div>
   <div class="actions_container">
-    <button class="action_button" (click)="toggleReplisVisibility()">
-      {{commentData.replyList.length}} Replies
+    <button class="action_button" (click)="toggleRepliesVisibility()">
+      {{ commentData.replyList.length }} Replies
     </button>
-    <button *ngIf="commentData.ownerId === currentUser" class="action_button">
+    <button
+      *ngIf="commentData.ownerId === currentUser && !isCommentEditable"
+      (click)="editButtonClickHandler()"
+      class="action_button"
+    >
       Edit
     </button>
   </div>
 </div>
 <div *ngIf="isRepliesExpanded" class="replies_container">
   <form [formGroup]="replyForm" class="reply_input" (ngSubmit)="replyFormSubmitHandler()">
-    <input type="text" placeholder="Write a reply..." formControlName="reply"/>
+    <input type="text" placeholder="Write a reply..." formControlName="reply" />
     <button
       type="submit"
       [disabled]="!(replyForm.status === 'VALID')"

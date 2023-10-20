@@ -4,21 +4,20 @@
       <img [src]="replyData.ownerAvatar">
     </div>
     <div class="right_container">
-      <div class="info_container">
-        <div class="username">
-          {{replyData.ownerName}}
-        </div>
-        <div class="time">
-          {{replyData.commentTime | date:'short'}}
-        </div>
-      </div>
-      <div class="comment_text">
-        {{replyData.commentText}}
-      </div>
+      <app-comment-reply-template
+        [isEditable]="isReplyEditable"
+        [commentData]="replyData"
+        (cancelEvent)="cancelEditReplyHandler()"
+        (updateEvent)="updateReplyHandler($event)"
+      ></app-comment-reply-template>
     </div>
   </div>
   <div *ngIf="replyData.ownerId === currentUser" class="actions_container">
-    <button class="action_button">
+    <button
+      *ngIf="replyData.ownerId === currentUser && !isReplyEditable"
+      (click)="editButtonClickHandler()"
+      class="action_button"
+    >
       Edit
     </button>
   </div>

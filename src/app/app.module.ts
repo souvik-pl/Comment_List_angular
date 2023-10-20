@@ -10,6 +10,7 @@ import { CommentCardComponent } from './comment-timeline/comment-card/comment-ca
 import { ReplyCardComponent } from './comment-timeline/reply-card/reply-card.component';
 import { StorageService } from './_services/storage.service';
 import { PostService } from './_services/post.service';
+import { CommentReplyTemplateComponent } from './comment-timeline/_shared/components/comment-reply-template/comment-reply-template.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PostService } from './_services/post.service';
     CommentTimelineComponent,
     CommentCardComponent,
     ReplyCardComponent,
+    CommentReplyTemplateComponent,
   ],
   imports: [
     BrowserModule,

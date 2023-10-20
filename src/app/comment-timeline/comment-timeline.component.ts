@@ -12,16 +12,16 @@ export class CommentTimelineComponent {
   public allComments!: IComment[];
 
   constructor(private storageService: StorageService) {
-    this.checkIfAnyDataAvailableInLocalStorage();
+    this.checkIfAnyCommentsAvailableInStorage();
     this.storageService.storeSubject.subscribe((comments: IComment[]) => {
       this.allComments = comments;
     });
   }
 
-  private checkIfAnyDataAvailableInLocalStorage(): void {
+  private checkIfAnyCommentsAvailableInStorage(): void {
     const comments: IComment[] | null = this.storageService.getComments();
     if (!comments) {
-      this.putIntialDummyDataInLocalStorage();
+      this.putIntialCommentsInStorage();
     }
     else {
       this.allComments = comments;
@@ -29,7 +29,7 @@ export class CommentTimelineComponent {
     }
   }
 
-  private putIntialDummyDataInLocalStorage() {
+  private putIntialCommentsInStorage(): void {
     this.storageService.putComments(DUMMY_COMMENTS);
     this.allComments = DUMMY_COMMENTS;
     this.storageService.storeSubject.next(DUMMY_COMMENTS);

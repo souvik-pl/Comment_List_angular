@@ -29,7 +29,6 @@ export class CommentFormComponent {
       this.commentForm.get('name')!.value,
       this.commentForm.get('comment')!.value
     );
-
     this.commentForm.reset();
   }
 }

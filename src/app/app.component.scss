@@ -27,3 +27,30 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+
+  .app_container {
+    height: max-content;
+
+    main {
+      flex-direction: column;
+      padding-top: 3rem;
+
+      section:nth-child(1) {
+        width: 100%;
+        margin-bottom: 3rem;
+      }
+
+      section:nth-child(2) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .app_container {
+    padding: 1rem 1rem;
+  }
+}

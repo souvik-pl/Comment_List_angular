@@ -15,7 +15,13 @@ h4 {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $gray_color;
+    background: transparent;
     border-radius: 3px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: $gray_color;
+    }
   }
 }
