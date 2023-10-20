@@ -4,6 +4,7 @@
     <input
       id="name-input"
       type="text"
+      placeholder="Souvik Paul"
       formControlName="name"
       [ngClass]="commentForm.get('name')?.invalid && commentForm.get('name')?.touched ?
       'input_error' : ''"
@@ -17,6 +18,7 @@
     <input
       id="comment-input"
       type="text"
+      placeholder="Hello world!"
       formControlName="comment"
       [ngClass]="commentForm.get('comment')?.invalid && commentForm.get('comment')?.touched ?
       'input_error' : ''"

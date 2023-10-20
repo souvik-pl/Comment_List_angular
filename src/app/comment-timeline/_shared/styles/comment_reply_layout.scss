@@ -61,6 +61,10 @@
       border: none;
       font-size: 0.9rem;
       margin-right: 1.5rem;
+
+      &:hover {
+        font-weight: 600;
+      }
     }
   }
 }

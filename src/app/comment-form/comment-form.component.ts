@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StorageService } from '../_services/storage.service';
-import { IComment } from '../_shared/interfaces/comment.interface';
-import { OWNER_AVATAR, OWNER_ID } from '../_shared/constants/credential';
+import { PostService } from '../_services/post.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -11,16 +9,12 @@ import { OWNER_AVATAR, OWNER_ID } from '../_shared/constants/credential';
 })
 export class CommentFormComponent {
   public commentForm!: FormGroup;
-  private allComments!: IComment[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private postService: PostService
   ) {
     this.initializeCommentForm();
-    this.storageService.storeSubject.subscribe((comments: IComment[]) => {
-      this.allComments = comments;
-    });
   }
 
   private initializeCommentForm(): void {
@@ -31,20 +25,11 @@ export class CommentFormComponent {
   }
 
   public commentFormSubmitHandler(): void {
-    const newCommentData: IComment = {
-      commentId: String(Date.now()),
-      parentId:  null,
-      ownerId: OWNER_ID,
-      ownerName: this.commentForm.get('name')!.value,
-      ownerAvatar: OWNER_AVATAR,
-      commentTime: Date.now(),
-      commentText: this.commentForm.get('comment')!.value,
-      replyList: []
-    };
+    this.postService.postComment(
+      this.commentForm.get('name')!.value,
+      this.commentForm.get('comment')!.value
+    );
 
-    const upadtedCommentList = [newCommentData, ...this.allComments];
-    this.storageService.putComments(upadtedCommentList);
-    this.storageService.storeSubject.next(upadtedCommentList);
     this.commentForm.reset();
   }
 }

@@ -18,10 +18,7 @@
     </div>
   </div>
   <div class="actions_container">
-    <button class="action_button">
-      Reply
-    </button>
-    <button class="action_button">
+    <button class="action_button" (click)="toggleReplisVisibility()">
       {{commentData.replyList.length}} Replies
     </button>
     <button *ngIf="commentData.ownerId === currentUser" class="action_button">
@@ -29,7 +26,17 @@
     </button>
   </div>
 </div>
-<div class="replies_container">
+<div *ngIf="isRepliesExpanded" class="replies_container">
+  <form [formGroup]="replyForm" class="reply_input" (ngSubmit)="replyFormSubmitHandler()">
+    <input type="text" placeholder="Write a reply..." formControlName="reply"/>
+    <button
+      type="submit"
+      [disabled]="!(replyForm.status === 'VALID')"
+      [ngClass]="replyForm.status !== 'VALID' ? 'btn_disabled' : ''"
+    >
+      Post
+    </button>
+  </form>
   <app-reply-card
     *ngFor="let reply of commentData.replyList"
     [replyData]="reply"

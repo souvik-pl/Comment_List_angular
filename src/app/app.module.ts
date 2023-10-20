@@ -9,6 +9,7 @@ import { CommentTimelineComponent } from './comment-timeline/comment-timeline.co
 import { CommentCardComponent } from './comment-timeline/comment-card/comment-card.component';
 import { ReplyCardComponent } from './comment-timeline/reply-card/reply-card.component';
 import { StorageService } from './_services/storage.service';
+import { PostService } from './_services/post.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { StorageService } from './_services/storage.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [StorageService],
+  providers: [StorageService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
