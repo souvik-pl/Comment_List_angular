@@ -1,4 +1,12 @@
 # Comment Section
+In this project, I have created a comment section with the following features - 
+- Write a comment
+- Edit a comment
+- Delete a comment
+- Write reply to a comment
+- Edit the reply
+- Delete the reply
+- View/Hide replies
 
 ## Installation
 
